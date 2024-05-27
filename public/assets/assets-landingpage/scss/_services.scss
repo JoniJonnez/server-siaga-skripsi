@@ -1,0 +1,33 @@
+/*--- services ---*/
+
+.services {
+	padding: 100px 0 70px;
+	background: rgba(0, 0, 0, 0) url("../images/services-bg.jpg") no-repeat scroll center 0 / cover;
+	.services-text {
+		margin-bottom: 30px;
+		transition: all 0.5s ease 0s;
+		i {
+			color: #3764eb;
+			font-size: 42px;
+			text-align: center;
+			border-radius: 50%;
+			line-height: 100px;
+			position: absolute;
+			left: 0;
+			top: -10px;
+		}
+		h4 {
+			color: $titleFont-color;
+			font-weight: 600;
+			line-height: 24px;
+		}
+	}
+	.services-text-left {
+		padding-left: 45px;
+		padding-bottom: 30px;
+		border-radius: 5px;
+		h3{
+			color: $titleFont-color;
+		}
+	}
+}

@@ -1,0 +1,53 @@
+/*--- Prices table ---*/
+
+.prices {
+	padding: 100px 0;
+	.price-box {
+		text-align: center;
+		box-shadow: 0px 3px 12px #1515151A;
+		
+		.price{
+			padding: 30px 0;
+			color:$titleFont-color;
+			strong{
+				font-size: 36px;
+			}
+			sup {
+    top: -.8em;
+    font-size: 16px;
+}
+		}
+		.title-box{
+			background: $blue-color;
+			h3{
+				margin: 0;
+				color: $white-color;
+				padding: 30px 0;
+			}
+			margin-bottom: 30px;
+		}
+		li {
+			display: list-item;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+		.btn-box {
+			padding: 30px 0;
+			margin-top: 40px;
+			border-top: 1px solid $blue-color;
+			a {
+				border: 1px solid $blue-color;
+				padding: 8px 20px;
+				color: $blue-color;
+			}
+			a:hover {
+				border: 1px solid $oring-color;
+				background: $oring-color;
+				color: $white-color;
+			}
+		}
+	}
+	.active{
+		border: 2px solid $blue-color;
+	}
+}

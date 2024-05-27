@@ -1,0 +1,91 @@
+
+/*--- px-bg ---*/
+
+.px-bg {
+	padding: 80px 0 100px;	
+	h2 {
+		color: $white-color;
+		font-weight: 600;
+		font-size: 38px;
+		line-height: 42px;
+	}
+	a {
+		background: $green-color;
+		box-shadow: 1px 6px 9px rgba(0, 0, 0, 0.1);
+		color: $white-color;
+		display: inline-block;
+		margin-right: 20px;
+		margin-top: 30px;
+		padding: 20px 40px;
+		text-decoration: none;
+		text-transform: uppercase;
+		transition: all 0.3s ease 0s;
+	}
+	a:hover {
+		background: $blue-color;
+		margin-top: 32px;
+	}
+}
+.px-bg-counter {
+	background: rgba(0, 0, 0, 0) url("../images/px-bg.jpg") no-repeat scroll center 0 / cover;
+	padding: 80px 0 100px;
+	text-align: center;
+	h2 {
+		color: $white-color;
+		font-weight: 600;
+		font-size: 46px;
+		line-height: 42px;
+	}
+	span{
+		font-style: italic;
+		color: $white-color;
+	}
+	a {
+		background: $green-color;
+		box-shadow: 1px 6px 9px rgba(0, 0, 0, 0.1);
+		color: $white-color;
+		display: inline-block;
+		margin-right: 20px;
+		margin-top: 30px;
+		padding: 20px 40px;
+		text-decoration: none;
+		text-transform: uppercase;
+		transition: all 0.3s ease 0s;
+	}
+	a:hover {
+		background: $blue-color;
+		margin-top: 32px;
+	}
+}
+
+
+
+/*--- px-bg ---*/
+
+.px-bg2 {
+	background: $green-color;
+	padding: 80px 0 100px;
+	h2 {
+		color: $white-color;
+		font-weight: 600;
+		font-size: 38px;
+		line-height: 42px;
+	}
+	a {
+		background: $titleFont-color;
+		box-shadow: 1px 6px 9px rgba(0, 0, 0, 0.1);
+		color: $white-color;
+		display: inline-block;
+		margin-right: 20px;
+		margin-top: 30px;
+		padding: 20px 40px;
+		text-decoration: none;
+		text-transform: uppercase;
+		transition: all 0.3s ease 0s;
+	}
+	a:hover {
+		background: $blue-color;
+		margin-top: 32px;
+	}
+}
+

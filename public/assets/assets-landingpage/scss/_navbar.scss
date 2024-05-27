@@ -1,0 +1,137 @@
+/*--- navbar ---*/
+
+.affix-top {
+	top: 20px;
+	padding-top: 10px;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {
+    background: none;
+   	color: $oring-color;
+}
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+    margin-left: 0;
+    padding-top: 18px;
+}
+.navbar-right {
+	margin-right: 0;
+}
+.top-social a {
+	color: $white-color;
+}
+.top-social a:hover {
+	color: #000;
+}
+
+.navbar-nav li {
+	float: left;
+	position: relative;
+}
+.navbar-inverse {
+	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+	border: medium none;
+	border-radius: 0;
+	margin-bottom: 0;
+	min-height: auto;
+	.navbar-nav li a {
+		color: $white-color;
+		padding-bottom: 25px;
+		padding-top: 25px;
+		font-weight: 500;
+		font-family: $title-family;
+	}
+	.navbar-nav li a:focus,
+	.navbar-nav li a:hover {
+		background-color: rgba(0, 0, 0, 0);
+		color: $oring-color;
+	}
+}
+.navbar-inverse .navbar-nav > li.open > a,
+.navbar-inverse .navbar-nav > li.open > a:hover,
+.navbar-inverse .navbar-nav > li.open > a:focus {
+	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+	color: $oring-color;
+}
+.navbar-nav li .dropdown-menu {
+	border-radius: 0;
+	padding: 20px 20px 0px;
+}
+.navbar-nav li .dropdown-menu li::after {
+	bottom: 13px;
+}
+.dropdown-menu.arrow li {
+	width: 100%;
+}
+.navbar-inverse .navbar-nav .dropdown-menu.arrow a {
+	color: rgb(0, 0, 0) !important;
+	height: 30px;
+	margin: 0 0 18px;
+	padding: 0;
+}
+.top-nav {
+	padding: 20px 0;
+	.top-social{
+		
+	}
+	li {
+		display: inline;
+		margin-right: 10px;
+		margin-left: 0;
+		color: $base-color;
+		i{
+			color: $base-color;				
+			font-size: 16px;
+			margin-right: 10px;
+		}		
+	}
+	.top-social{
+		li{
+			margin-left: 0;
+			margin-right: 10px;
+			i{
+				margin-left: 10px;
+			margin-right: 0px;
+			}
+		}
+		a{
+			i{
+				color: $base-color;				
+			}
+			i:hover{
+					color: $oring-color;
+				}
+		}
+	}
+}
+.affix {
+	background: $blue-color;
+	position: fixed;
+	.in-disktop {
+		display: none;
+	}
+	.in-mobile {
+		margin-top: 28px;
+	}
+}
+.navbar-fixed-top {
+	transition: all 0.3s ease 0s;
+}
+.affix-top .in-mobile {
+	display: none;
+}
+
+.nav.navbar-nav li:hover::after {
+	width: 100%;
+}
+.getbtn{
+	background: $oring-color;
+	padding: 15px 25px !important;
+margin-top: 10px;
+border-radius: 5px;	
+}
+.getbtn:hover{
+		background: $white-color !important;
+	}
+.nav.navbar-nav.nav-center {
+    margin-left:25%;
+	width: 100%;
+}

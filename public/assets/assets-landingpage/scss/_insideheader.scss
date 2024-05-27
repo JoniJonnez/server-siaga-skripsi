@@ -1,0 +1,58 @@
+/*--- insid-header ---*/
+
+.insidemenu .nav.navbar-nav a {
+	color: $white-color;
+}
+.insidemenu .nav.navbar-nav a:hover {
+	color: $white-color;
+}
+.insidemenu.affix .nav.navbar-nav a {
+	color: $titleFont-color;
+}
+.inside-logo {
+	margin-left: 0 !important;
+	margin-top: -26px;
+}
+.insid-header {	
+	background: rgba(0, 0, 0, 0) url("../images/header-bg.jpg") no-repeat scroll center 0 / cover;
+}
+.insid-header-text {
+	margin: 200px auto 100px;
+	width: 100%;
+	h1 {
+		font-size:48px;
+		font-weight: 500;
+		color: $white-color;
+	}
+}
+.bdrcrums {
+	display: inline-block;
+    padding: 10px 0;
+	li {
+		display: inline;
+		color: $oring-color;
+	}
+	li a {
+		color: $white-color;
+	}
+}
+.about-header
+{
+	background: rgba(0, 0, 0, 0) url("../images/about-header.jpg") no-repeat scroll center 0 / cover;
+}
+.services-header
+{
+	background: rgba(0, 0, 0, 0) url("../images/services-header.jpg") no-repeat scroll center 0 / cover;
+}
+.gallery-header
+{
+	background: rgba(0, 0, 0, 0) url("../images/gallery-header.jpg") no-repeat scroll center 0 / cover;
+}
+.blog-header
+{
+	background: rgba(0, 0, 0, 0) url("../images/blog-header-image.jpg") no-repeat scroll center 0 / cover;
+}
+.contact-header
+{
+	background: rgba(0, 0, 0, 0) url("../images/contact-header.jpg") no-repeat scroll center 0 / cover;
+}

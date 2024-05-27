@@ -1,0 +1,64 @@
+/*--- features ---*/
+
+.features {
+	position:relative;	
+	padding: 50px 0 100px;
+	.features-img {
+		overflow: hidden;
+		width: 100%;
+		position: relative;
+		img {
+			width: 100%;
+		}
+	}
+	.features-text {
+		width: 60%;
+		margin-top: 50px;
+		h3{
+			color: $titleFont-color;
+			font-size: 26px
+		}
+		li{
+			margin-bottom: 30px;
+		}
+	}	
+}
+/*--- spical features ---*/
+.spicel-features{
+	background: rgba(0, 0, 0, 0) url("../images/spical-feature-bg.png") no-repeat scroll center 0 / cover;
+	padding: 100px 0;
+	.spicel-features-text{
+		background: $background01;
+		text-align: center;
+		padding: 25px 28px 40px;
+		float: left;
+		width: 100%;
+		margin-top: 100px;
+		i{
+			background: $blue-color;
+			color: $white-color;
+			font-size: 60px;
+			width: 155px;
+			height: 155px;
+			line-height: 155px;
+			border-radius: 50%;
+			margin-top: -111px;
+			display: inline-block;
+			margin-bottom: 10px;
+			float: left;
+			margin-left: 24.5%;
+		}
+		h3{
+			color: $titleFont-color;
+			margin-bottom: 15px;
+			width: 100%;
+			float: left;
+		}
+		p{
+			width: 88%;
+			margin: auto;
+			display: inline-block;
+		}
+		
+	}
+}

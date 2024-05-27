@@ -1,0 +1,50 @@
+/*--- 
+import
+variables 
+loading
+body
+navbar
+mainheader
+about
+insideheader
+about
+features
+services
+px-bg
+news
+faq
+contact
+footer
+responsive
+---*/
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i');
+/*--- icon font ---*/
+@import url('../font/css/font-awesome.min.css');
+@import url('../font/pe-icon-7-stroke/css/pe-icon-7-stroke.css');
+/*--- bootstrap ---*/
+@import url('../css/bootstrap.min.css');
+/*--- animate ---*/
+@import url('../css/animate.min.css');
+@import url('../css/baguetteBox.css');
+
+
+@import 'variables';
+@import 'loading';
+@import 'body';
+@import 'navbar';
+@import 'mainheader';
+@import 'insideheader';
+@import 'about';
+@import 'features';
+@import 'services';
+@import 'px-bg';
+@import 'news';
+@import 'prices';
+@import 'faq';
+@import 'footer';
+@import 'responsive';
+
+
+
