@@ -26,3 +26,4 @@ Route::put('/rumah/update/{id}', 'App\Http\Controllers\Api\RumahApiController@up
 Route::delete('/rumah/delete/{id}', 'App\Http\Controllers\Api\RumahApiController@delete');
 
 Route::post('/user/login', 'App\Http\Controllers\Api\UserApiController@login');
+Route::post('/user/register', 'App\Http\Controllers\Api\UserApiController@register');

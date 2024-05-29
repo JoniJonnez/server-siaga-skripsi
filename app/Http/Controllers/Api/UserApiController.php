@@ -138,4 +138,29 @@ class UserApiController extends Controller
 			], 200);
     }
 
+	public function register(Request $request){
+		$dt = new UserApiModel;
+		$dt->role 				= $request->role;
+		$dt->name 				= $request->fullname;
+		// $dt->status 			= $request->jalan;
+		$dt->email 				= $request->email;
+		$dt->phone 				= $request->phone;
+		$dt->password 			= Hash::make($request->password);
+
+		$result = $dt->save();
+		if($result){
+			return response([
+				 	'status' 	=> '200',
+					'messages' 	=> 'Data has been saved',
+					'data'		=> $dt
+				], 200);
+		}
+		else{
+			return response([
+				 	'status' 	=> '404',
+					'messages' 	=> 'Data has not been saved'
+				], 404);
+		}
+	}
+
 }
