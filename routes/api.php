@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/rumah', 'App\Http\Controllers\Api\RumahApiController@get_all');
-Route::get('/rumah/by_id/{id}', 'App\Http\Controllers\Api\RumahApiController@by_id');
+Route::get('/rumah/by-id/{id}', 'App\Http\Controllers\Api\RumahApiController@by_id');
 Route::post('/rumah/insert', 'App\Http\Controllers\Api\RumahApiController@insert');
 Route::put('/rumah/update/{id}', 'App\Http\Controllers\Api\RumahApiController@update');
 Route::delete('/rumah/delete/{id}', 'App\Http\Controllers\Api\RumahApiController@delete');
@@ -28,3 +28,7 @@ Route::delete('/rumah/delete/{id}', 'App\Http\Controllers\Api\RumahApiController
 Route::post('/user/login', 'App\Http\Controllers\Api\UserApiController@login');
 Route::post('/user/register', 'App\Http\Controllers\Api\UserApiController@register');
 Route::delete('/user/delete/{id}', 'App\Http\Controllers\Api\UserApiController@delete');
+
+Route::get('/informasi', 'App\Http\Controllers\Api\InformasiApiController@get_all');
+Route::get('/informasi/by-id/{id}', 'App\Http\Controllers\Api\InformasiApiController@by_id');
+Route::delete('/informasi/delete/{id}', 'App\Http\Controllers\Api\InformasiApiController@delete');
