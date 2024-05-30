@@ -81,12 +81,6 @@ class UserApiController extends Controller
 		}
 	}
 
-    // $2a$12$xOvpL/p2x4ch3T.GAL62PO0Kgg5M6QkfvQkHYOpcWbI6GqflQXqjO admin
-    // $2y$10$NfeHCHSx9MRwsorqPd0txuwOGqR43QOAlJDxMMPBip6Eo7lxItqbm origin
-
-    // $2y$10$sgrnGSyxARXUx9f2xPH5VuAKduYeAAF0PlobOJZ5qttMn1Xf1GZDK
-
-
     public function login(Request $request){ 
         $cek = DB::table('users')
                     ->where('email', $request->email)
@@ -116,20 +110,30 @@ class UserApiController extends Controller
 		$dt->phone 				= $request->phone;
 		$dt->password 			= Hash::make($request->password);
 
-		$result = $dt->save();
-		if($result){
+		$cek_user = UserApiModel::where('email', $request->email)->orWhere('phone', $request->phone);
+		if($cek_user){
 			return response([
-				 	'status' 	=> '200',
-					'messages' 	=> 'Data has been saved',
-					'data'		=> $dt
-				], 200);
+				'status' 	=> '400',
+			   'messages' 	=> 'Phone and Email already exist'
+		   ], 400);
+		}else{
+			$result = $dt->save();
+			if($result){
+				return response([
+						'status' 	=> '200',
+						'messages' 	=> 'Data has been saved',
+						'data'		=> $dt
+					], 200);
+			}
+			else{
+				return response([
+						'status' 	=> '404',
+						'messages' 	=> 'Data has not been saved'
+					], 404);
+			}
 		}
-		else{
-			return response([
-				 	'status' 	=> '404',
-					'messages' 	=> 'Data has not been saved'
-				], 404);
-		}
+
+		
 	}
 
 }
