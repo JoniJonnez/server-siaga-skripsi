@@ -19,44 +19,6 @@ class UserApiController extends Controller
 			], 200);
 	}
 
-	// public function update(Request $request, $id){
-	// 	$c_exist = UserApiModel::firstWhere('id', $id);
-	// 	if($c_exist){
-	// 		$dt = UserApiModel::find($id);
-	// 		// same DB				same with postman
-	// 		$dt->user_id 		= $request->user_id;
-	// 		$dt->komunitas_id 	= $request->komunitas_id;
-	// 		$dt->jalan 			= $request->jalan;
-	// 		$dt->rt 			= $request->rt;
-	// 		$dt->rw 			= $request->rw;
-	// 		$dt->blok 			= $request->blok;
-	// 		$dt->kode_rumah		= $request->kode_rumah;
-	// 		$dt->status_hunian	= $request->status_hunian;
-	// 		$dt->bulan_huni		= $request->bulan_huni;
-	// 		$dt->tahun_huni 	= $request->tahun_huni;
-	// 		$dt->status_komunitas= $request->status_komunitas;
-	// 		$result = $dt->save();
-	// 		if($result){
-	// 			return response([
-	// 				'status' 	=> '200',
-	// 			   'messages' 	=> 'Data has been updated',
-	// 			   'data'		=> $dt
-	// 		   ], 200);
-	// 		}else{
-	// 			return response([
-	// 				'status' 	=> '404',
-	// 			   'messages' 	=> 'Data has not been updated'
-	// 		   ], 400);
-	// 		}
-	// 	}
-	// 	else {
-	// 		return response([
-	// 			 	'status' 	=> '404',
-	// 				'messages' 	=> 'Data not found'
-	// 			], 404);
-	// 	}
-	// }
-
 	public function delete($id){
 		$c_exist = UserApiModel::firstWhere('id', $id);
 		if($c_exist) {
@@ -110,7 +72,7 @@ class UserApiController extends Controller
 		$dt->phone 				= $request->phone;
 		$dt->password 			= Hash::make($request->password);
 
-		$cek_user = UserApiModel::where('email', $request->email)->orWhere('phone', $request->phone);
+		$cek_user = UserApiModel::where('email', $request->email)->orWhere('phone', $request->phone)->exists();;
 		if($cek_user){
 			return response([
 				'status' 	=> '400',
@@ -132,8 +94,43 @@ class UserApiController extends Controller
 					], 404);
 			}
 		}
+	}
 
-		
+	public function pengaturan(Request $request, $id){
+		$c_exist = UserApiModel::firstWhere('id', $id);
+		if($c_exist){
+			$cek_user_email = UserApiModel::where('email', $request->email)->exists();
+			if($cek_user_email){
+				return response([
+					'status' 	=> '400',
+					'messages' 	=> 'Email already exist'
+				], 400);
+			}
+			else{ 
+				$dt = UserApiModel::find($id); 
+				$dt->email 		= $request->email;
+				$dt->password 	= Hash::make($request->password);
+				$result = $dt->save();
+				if($result){
+					return response([
+						'status' 	=> '200',
+						'messages' 	=> 'Data has been updated',
+						'data'		=> $dt
+						], 200);
+				}else{
+					return response([
+						'status' 	=> '400',
+						'messages' 	=> 'Data has not been updated'
+						], 400);
+				}
+			}
+		}
+		else {
+			return response([
+				 	'status' 	=> '404',
+					'messages' 	=> 'Data not found'
+				], 404);
+		}
 	}
 
 }

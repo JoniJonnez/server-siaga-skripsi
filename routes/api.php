@@ -28,6 +28,7 @@ Route::delete('/rumah/delete/{id}', 'App\Http\Controllers\Api\RumahApiController
 Route::post('/user/login', 'App\Http\Controllers\Api\UserApiController@login');
 Route::post('/user/register', 'App\Http\Controllers\Api\UserApiController@register');
 Route::delete('/user/delete/{id}', 'App\Http\Controllers\Api\UserApiController@delete');
+Route::post('/user/pengaturan/{id}', 'App\Http\Controllers\Api\UserApiController@pengaturan');
 
 Route::get('/informasi', 'App\Http\Controllers\Api\InformasiApiController@get_all');
 Route::get('/informasi/by-id/{id}', 'App\Http\Controllers\Api\InformasiApiController@by_id');
