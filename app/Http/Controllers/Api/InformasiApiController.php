@@ -67,28 +67,35 @@ class InformasiApiController extends Controller
 		}
 	}
 
-	// public function insert(Request $request){
-	// 	$dt = new InformasiApiModel;
-	// 	$dt->role 				= $request->role;
-	// 	$dt->name 				= $request->fullname;
-	// 	$dt->email 				= $request->email;
-	// 	$dt->phone 				= $request->phone;
-	// 	$dt->password 			= Hash::make($request->password);
+	public function insert(Request $request){ 
+		$dt = new InformasiApiModel; 
+		$dt->user_id 				= $request->user_id;
+		$dt->komunitas_id 			= $request->komunitas_id;
+		$dt->judul_informasi 		= $request->judul_informasi; 
+		$dt->deskripsi_singkat		= $request->deskripsi_singkat;
+		$dt->isi_informasi			= $request->isi_informasi;
+		
 
-	// 	$result = $dt->save();
-	// 	if($result){
-	// 		return response([
-	// 			 	'status' 	=> '200',
-	// 				'messages' 	=> 'Data has been saved',
-	// 				'data'		=> $dt
-	// 			], 200);
-	// 	}
-	// 	else{
-	// 		return response([
-	// 			 	'status' 	=> '404',
-	// 				'messages' 	=> 'Data has not been saved'
-	// 			], 404);
-	// 	}
-	// }
+		if ($request->hasFile('foto_informasi')) {
+			$file = $request->file('foto_informasi');
+			$fileName = time().'_'.$file->getClientOriginalName();
+			$dt->foto_informasi = $file->storeAs('file_informasi', $fileName, 'public');
+			$dt->file = $dt->foto_informasi;
+		}
 
+		$result = $dt->save();
+		if($result){
+			return response([
+				 	'status' 	=> '200',
+					'messages' 	=> 'Data has been saved',
+					'data'		=> $dt
+				], 200);
+		}
+		else{
+			return response([
+				 	'status' 	=> '404',
+					'messages' 	=> 'Data has not been saved'
+				], 404);
+		}
+	}
 }
