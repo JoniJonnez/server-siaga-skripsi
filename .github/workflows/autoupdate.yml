@@ -31,6 +31,6 @@ jobs:
       - name: Move folder laravel terbaru ke apache2
         run: |
           sudo pwd \
-          && sudo mv /home/runner/work/siaga-skripsi-binus/siaga-skripsi-binus /var/www/html/ \
+          && sudo cp /home/runner/work/siaga-skripsi-binus/siaga-skripsi-binus /var/www/html/ \
           && sudo chmod -R 777 /var/www/html/siaga-skripsi-binus \
           && sudo systemctl restart apache2
