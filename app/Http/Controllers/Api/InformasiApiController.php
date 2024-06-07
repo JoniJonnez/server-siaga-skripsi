@@ -77,7 +77,7 @@ class InformasiApiController extends Controller
     if ($request->hasFile('foto_informasi')) {
         $file = $request->file('foto_informasi');
         $fileName = time().'_'.$file->getClientOriginalName();
-        $dt->foto_informasi = $file->storeAs('file_informasi', $fileName, 'public');
+        $dt->foto_informasi = $file->storeAs('foto_informasi', $fileName, 'public');
         $dt->file = $dt->foto_informasi;
     }
 
