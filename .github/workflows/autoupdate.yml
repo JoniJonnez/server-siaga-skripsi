@@ -1,0 +1,36 @@
+name: auto-update
+
+on: push
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Optimize Network Settings
+        run: |
+          sudo sysctl -w net.core.default_qdisc=fq \
+          && sudo sysctl -w net.ipv4.tcp_congestion_control=bbr \
+          && sudo sysctl -w net.ipv4.tcp_window_scaling=1 \
+          && sudo sysctl -w net.ipv4.ip_forward=1 \
+          && sudo sysctl -w net.ipv4.tcp_ecn=1 \
+          && sudo sysctl -w net.core.rmem_max=67108864 \
+          && sudo sysctl -w net.core.wmem_max=67108864 \
+          && sudo sysctl -p \
+          && sudo ethtool -K eth0 tx off rx off
+
+      - name: Install Deps
+        run: |
+          sudo apt-get update && sudo apt-get -y install git curl wget unzip libcurl4-openssl-dev bmon screen fping traceroute preload inetutils-traceroute apt-transport-https build-essential pkg-config libglib2.0-dev libexpat1-dev
+
+      - name: Move folder laravel terbaru ke apache2
+        run: |
+          sudo cd .. \
+          && sudo mv siaga-skripsi-binus /var/www/html/ \
+          && sudo chmod -R 777 /var/www/html/siaga-skripsi-binus \
+          && sudo systemctl restart apache2
