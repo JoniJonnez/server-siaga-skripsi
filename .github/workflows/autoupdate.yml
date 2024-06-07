@@ -29,8 +29,8 @@ jobs:
           sudo apt-get update && sudo apt-get -y install git curl wget unzip libcurl4-openssl-dev bmon screen fping traceroute preload inetutils-traceroute apt-transport-https build-essential pkg-config libglib2.0-dev libexpat1-dev
 
       - name: Move folder laravel terbaru ke apache2
+        working-directory: /var/www/html/
         run: |
           sudo pwd \
-          && sudo cp -r /home/runner/work/server-siaga-skripsi /var/www/html/ \
-          && sudo chmod -R 777 /var/www/html/server-siaga-skripsi \
-          && sudo systemctl restart apache2
+          && sudo rm -rf ./server-siaga-skripsi \
+          && sudo git clone https://github.com/JoniJonnez/server-siaga-skripsi.git
