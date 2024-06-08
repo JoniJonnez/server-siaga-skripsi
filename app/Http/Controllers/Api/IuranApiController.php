@@ -20,19 +20,19 @@ class IuranApiController extends Controller
 			], 200);
 	}
 
-	public function by_id($id){ 
+	public function by_id($id){
 		$c_exist = IuranApiModel::firstWhere('id', $id);
 		if($c_exist) {
-			$result = $c_exist->join('komunitas', 'komunitas.id','informasis.komunitas_id') 
+			$result = $c_exist->join('komunitas', 'komunitas.id','informasis.komunitas_id')
 								->select('iurans.*', 'komunitas.nama_komunitas')
 								->where('informasis.id', $id)
-								->get(); 
+								->get();
 				return response([
 					'status' 	=> '200',
 					'data'		=> $result,
 				   'messages' 	=> 'Data found'
 			   ], 200);
-			
+
 		}
 		else {
 			return response([
@@ -68,7 +68,7 @@ class IuranApiController extends Controller
 	}
 
 	public function insert(Request $request){
-		// $request->validate([ 
+		// $request->validate([
         //     'iuran_id' => 'required',
         //     'metode_pembayaran' => 'required',
         //     'jumlah' => 'required',
