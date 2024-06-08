@@ -14,6 +14,7 @@ func main() {
 		removeOldSiaga()
 		gitCloneSiaga()
 		storageLinkSiaga()
+		setPermissionSiaga()
 		fmt.Println("Successfully updated 'server-siaga-skripsi' directory!")
 		fmt.Println("We'll auto-update it every 1 minute.")
 
@@ -67,6 +68,20 @@ func storageLinkSiaga() {
 	cmd = exec.Command("php", "artisan", "storage:link")
 	cmd.Dir = "./server-siaga-skripsi"
 	stdout, err = cmd.Output()
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+	fmt.Println(string(stdout))
+	fmt.Println("Done!")
+
+}
+
+func setPermissionSiaga() {
+
+	fmt.Println("Setting up chmod for 'server-siaga-skripsi' directory...")
+	cmd := exec.Command("chmod", "-R", "777", "/var/www/html/server-siaga-skripsi/")
+	stdout, err := cmd.Output()
 	if err != nil {
 		fmt.Println(err.Error())
 		return
