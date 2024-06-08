@@ -3,15 +3,24 @@ package main
 import (
 	"fmt"
 	"os/exec"
+	"time"
 )
 
 func main() {
 
-	removeOldSiaga()
-	gitCloneSiaga()
-	storageLinkSiaga()
-	setPermissionSiaga()
-	fmt.Println("Successfully updated 'server-siaga-skripsi' directory!")
+	// auto-update siaga folder setiap 3 menit
+	for {
+
+		removeOldSiaga()
+		gitCloneSiaga()
+		storageLinkSiaga()
+		setPermissionSiaga()
+		fmt.Println("Successfully updated 'server-siaga-skripsi' directory!")
+		fmt.Println("We'll auto-update it every 3 minute.")
+
+		// lakukan sleep selama 3 menit
+		time.Sleep(3 * time.Minute)
+	}
 
 }
 
