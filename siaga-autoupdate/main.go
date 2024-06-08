@@ -8,7 +8,7 @@ import (
 
 func main() {
 
-	// auto-update siaga folder setiap 1 menit
+	// auto-update siaga folder setiap 3 menit
 	for {
 
 		removeOldSiaga()
@@ -16,10 +16,10 @@ func main() {
 		storageLinkSiaga()
 		setPermissionSiaga()
 		fmt.Println("Successfully updated 'server-siaga-skripsi' directory!")
-		fmt.Println("We'll auto-update it every 1 minute.")
+		fmt.Println("We'll auto-update it every 3 minute.")
 
-		// lakukan sleep selama 1 menit
-		time.Sleep(1 * time.Minute)
+		// lakukan sleep selama 3 menit
+		time.Sleep(3 * time.Minute)
 	}
 
 }
