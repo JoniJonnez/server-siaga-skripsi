@@ -12,9 +12,13 @@ class InformasiApiController extends Controller
 {
 	public function get_all(){
 		$length = DB::table('informasis')->count();
+        $data = DB::table('informasis')
+        ->select('id','user_id','komunitas_id','users.name','users.foto','judul_informasi', 'foto_informasi','deskripsi_singkat','isi_informasi','file','created_at','updated_at')
+        ->join('users', 'users.id','=','informasis.user_id')
+        ->get();
 		return response([
 			 	'status' 		=> '200',
-				'data'			=> InformasiApiModel::all(),
+				'data'			=> $data,
 				'totalRecord'	=> $length
 			], 200);
 	}
