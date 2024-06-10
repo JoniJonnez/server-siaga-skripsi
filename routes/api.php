@@ -39,3 +39,8 @@ Route::get('/iuran/list', 'App\Http\Controllers\Api\IuranApiController@get_all')
 Route::get('/informasi/by-id/{id}', 'App\Http\Controllers\Api\InformasiApiController@by_id');
 Route::delete('/informasi/delete/{id}', 'App\Http\Controllers\Api\InformasiApiController@delete');
 Route::post('/iuran/upload', 'App\Http\Controllers\Api\IuranApiController@insert');
+
+Route::get('/pengaduan', 'App\Http\Controllers\Api\PengaduanApiController@get_all');
+Route::get('/pengaduan/by-id/{id}', 'App\Http\Controllers\Api\PengaduanApiController@by_id');
+Route::post('/pengaduan/insert', 'App\Http\Controllers\Api\PengaduanApiController@insert');
+Route::delete('/pengaduan/delete/{id}', 'App\Http\Controllers\Api\PengaduanApiController@delete');
