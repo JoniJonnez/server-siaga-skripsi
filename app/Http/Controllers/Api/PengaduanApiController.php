@@ -79,7 +79,7 @@ public function insert(Request $request)
         $file = $request->file('pengaduan_image');
         $fileName = time().'_'.$file->getClientOriginalName();
         $dt->pengaduan_image = $file->storeAs('pengaduan_image', $fileName, 'public');
-        $dt->file = $dt->pengaduan_image;
+        // $dt->file = $dt->pengaduan_image;
     }
 
     $result = $dt->save();
