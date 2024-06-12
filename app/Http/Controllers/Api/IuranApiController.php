@@ -117,23 +117,22 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\api\IuranPenggunaApiModel;
-use App\Models\api\IuranApiModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class IuranApiController extends Controller
 {
-        public function get_all(){
-            $length = DB::table('iuran_penggunas')->count();
-            $data = DB::table('iuran_penggunas')
-            ->select('iuran_penggunas.id','user_id','komunitas_id','users.name','users.foto','metode_pembayaran','jumlah','keterangan','bukti_pembayaran','status_pembayaran','tanggapan_iuran','iuran_penggunas.created_at')
-            ->join('users', 'users.id','=','iuran_penggunas.user_id')
-            ->get();
-            return response([
-                    'status' 		=> '200',
-                    'data'			=> $data,
-                    'totalRecord'	=> $length
-                ], 200);
+	public function get_all(){
+		$length = DB::table('iuran_penggunas')->count();
+        $data = DB::table('iuran_penggunas')
+        ->select('iuran_penggunas.id','user_id','komunitas_id','users.name','users.foto','metode_pembayaran','jumlah','keterangan','bukti_pembayaran','status_pembayaran','tanggapan_iuran','iuran_penggunas.created_at')
+        ->join('users', 'users.id','=','iuran_penggunas.user_id')
+        ->get();
+		return response([
+			 	'status' 		=> '200',
+				'data'			=> $data,
+				'totalRecord'	=> $length
+			], 200);
 	}
 
 	public function by_id($id){
@@ -211,39 +210,4 @@ class IuranApiController extends Controller
     }
 }
 
-// public function get_all_iurans() {
-//         $length = DB::table('iurans')->count();
-//         $data = DB::table('iurans')
-//         ->select(
-//           'iurans.id',
-//           'iurans.iuran_id',
-//           'iurans.user_id',
-//           'users.name as username',
-//           'iurans.komunitas_id',
-//           'iurans.metode_pembayaran',
-//           'iurans.jumlah',
-//           'iurans.keterangan',
-//           'iurans.bukti_pembayaran',
-//           'iurans.status_pembayaran',
-//           'iurans.created_at'
-//         )
-//         ->join('users', 'users.id', '=', 'iurans.user_id')
-//         ->get();
-//         return response([
-//             'status'    => '200',
-//             'data'     => $data,
-//             'totalRecord'  => $length
-//           ], 200);
-//       }
-//     }
-
-
-	public function get_all_iuranDetails(){
-		$length = DB::table('iurans')->count();
-		return response([
-			 	'status' 		=> '200',
-				'data'			=> IuranApiModel::all(),
-				'totalRecord'	=> $length
-			], 200);
-	}
 }
