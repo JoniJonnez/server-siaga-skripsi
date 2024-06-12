@@ -5,9 +5,9 @@ namespace App\Models\api;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class IuranPenggunaApiModel extends Model
+class IuranApiModel extends Model
 {
-    protected $table = 'iuran_penggunas';
-    protected $primaryKey = 'id';
+	protected $table = 'iurans';
+	protected $primaryKey = 'id';
     use HasFactory;
 }
