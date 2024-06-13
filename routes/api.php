@@ -39,7 +39,7 @@ Route::get('/iuran/list', 'App\Http\Controllers\Api\IuranApiController@get_all')
 Route::get('/iuran/by-id/{id}', 'App\Http\Controllers\Api\IuranApiController@by_id');
 Route::delete('/iuran/delete/{id}', 'App\Http\Controllers\Api\IuranApiController@delete');
 Route::post('/iuran/insert', 'App\Http\Controllers\Api\IuranApiController@insert');
-Route::get('/iurans', 'App\Http\Controllers\Api\IuranApiController@get_all_iuranDetails');
+// Route::get('/iurans', 'App\Http\Controllers\Api\IuranApiController@get_all_iuranDetails');
 
 //pengaduan or laporan
 

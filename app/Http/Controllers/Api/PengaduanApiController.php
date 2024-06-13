@@ -12,11 +12,15 @@ class PengaduanApiController extends Controller
     {
     public function get_all(){
     $length = DB::table('pengaduans')->count();
+    $data = DB::table('pengaduans')
+    ->select('pengaduans.id','user_id','komunitas_id','users.name','users.foto','lokasi_kejadian', 'waktu_kejadian','penyebab_kejadian','status_pengaduan','tanggapan_pengaduan','judul_pengaduan','isi_pengaduan','pengaduans.created_at','pengaduans.updated_at')
+    ->join('users', 'users.id','=','pengaduans.user_id')
+    ->get();
     return response([
-    'status' => '200',
-    'data'=> PengaduanApiModel::all(),
-    'totalRecord'=> $length
-    ], 200);
+             'status' 		=> '200',
+            'data'			=> $data,
+            'totalRecord'	=> $length
+        ], 200);
 }
 
 public function by_id($id){
