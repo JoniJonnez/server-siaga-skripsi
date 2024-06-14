@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 class UserApiController extends Controller
 {
 	public function get_all(){
-		$length = DB::table('rumahs')->count();
+		$length = DB::table('users')->count();
 		return response([
 			 	'status' 		=> '200',
 				'data'			=> UserApiModel::all(),
@@ -43,7 +43,7 @@ class UserApiController extends Controller
 		}
 	}
 
-    public function login(Request $request){ 
+    public function login(Request $request){
         $cek = DB::table('users')
                     ->where('email', $request->email)
                     // ->where('password', $request->password)
@@ -51,12 +51,12 @@ class UserApiController extends Controller
             foreach ($cek as $data) {
                 if(Hash::check($request->password, $data->password)){
                     return response([
-                       'message' 		=> 'success', 
+                       'message' 		=> 'success',
                        'data'			=> $cek,
                        'totalRecord'	=> $cek->count()
                    ], 200);
                 }
-            } 
+            }
 		return response([
 			 	'message' 		=> 'failed',
 				'data'			=> '',
@@ -106,8 +106,8 @@ class UserApiController extends Controller
 					'messages' 	=> 'Email already exist'
 				], 400);
 			}
-			else{ 
-				$dt = UserApiModel::find($id); 
+			else{
+				$dt = UserApiModel::find($id);
 				$dt->email 		= $request->email;
 				$dt->password 	= Hash::make($request->password);
 				$result = $dt->save();

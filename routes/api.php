@@ -25,6 +25,7 @@ Route::post('/rumah/insert', 'App\Http\Controllers\Api\RumahApiController@insert
 Route::put('/rumah/update/{id}', 'App\Http\Controllers\Api\RumahApiController@update');
 Route::delete('/rumah/delete/{id}', 'App\Http\Controllers\Api\RumahApiController@delete');
 
+Route::post('/user/login/all', 'App\Http\Controllers\Api\UserApiController@get_all');
 Route::post('/user/login', 'App\Http\Controllers\Api\UserApiController@login');
 Route::post('/user/register', 'App\Http\Controllers\Api\UserApiController@register');
 Route::delete('/user/delete/{id}', 'App\Http\Controllers\Api\UserApiController@delete');
