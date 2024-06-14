@@ -13,7 +13,7 @@ class IuranApiController extends Controller
 	public function get_all(){
 		$length = DB::table('iuran_penggunas')->count();
         $data = DB::table('iuran_penggunas')
-        ->select('iuran_penggunas.id','user_id','users.name','users.foto','metode_pembayaran','jumlah','keterangan','bukti_pembayaran','status_pembayaran','tanggapan_iuran','iuran_penggunas.created_at')
+        ->select('iuran_penggunas.id','user_id','users.name','users.foto','metode_pembayaran','keterangan','bukti_pembayaran','status_pembayaran','iuran_penggunas.created_at')
         ->join('users', 'users.id','=','iuran_penggunas.user_id')
         ->get();
 		return response([
