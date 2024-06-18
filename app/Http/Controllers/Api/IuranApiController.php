@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\api\IuranPenggunaApiModel;
-use App\Models\api\IuranTipeApiModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -25,14 +24,6 @@ class IuranApiController extends Controller
 			], 200);
 	}
 
-	public function get_iuran(){
-		$length = DB::table('iurans')->count();
-		return response([
-			 	'status' 		=> '200',
-				'data'			=> IuranTipeApiModel::all(),
-				'totalRecord'	=> $length
-			], 200);
-	}
 	public function by_id($id){
 		$c_exist = IuranPenggunaApiModel::firstWhere('id', $id);
 		if($c_exist) {
