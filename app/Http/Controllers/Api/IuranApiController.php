@@ -81,32 +81,76 @@ class IuranApiController extends Controller
 				], 404);
 		}
 	}
+    
+    public function insert(Request $request)
+    {
+      // Validate incoming request
+      $request->validate([
+        'user_id' => 'required|exists:users,id',
+        'iuran_id' => 'required|exists:iurans,id',
+        'keterangan' => 'required|string',
+        'bukti_pembayaran' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      ]);
 
-	public function insert(Request $request)
-{
-    $dt = new IuranPenggunaApiModel;
-    $dt->user_id = $request->user_id;
-    $dt->keterangan = $request->keterangan;
+      // Create a new IuranPenggunaApiModel instance
+      $dt = new IuranPenggunaApiModel;
 
-    if ($request->hasFile('bukti_pembayaran')) {
+      // Assign the incoming request data to the model
+      $dt->user_id = $request->user_id;
+      $dt->iuran_id = $request->iuran_id;
+      $dt->keterangan = $request->keterangan;
+
+      // Handle file upload
+      if ($request->hasFile('bukti_pembayaran')) {
         $file = $request->file('bukti_pembayaran');
         $fileName = time().'_'.$file->getClientOriginalName();
-        $dt->bukti_pembayaran = $file->storeAs('bukti_pembayaran', $fileName, 'public');
+        $filePath = $file->storeAs('bukti_pembayaran', $fileName, 'public');
+        $dt->bukti_pembayaran = $filePath;
+      }
+
+      // Save the model
+      $result = $dt->save();
+
+      // Return appropriate response
+      if ($result) {
+        return response([
+          'status' => '200',
+          'message' => 'Data has been saved',
+          'data' => $dt
+        ], 200);
+      } else {
+        return response([
+          'status' => '500',
+          'message' => 'Data could not be saved'
+        ], 500);
+      }
     }
 
-    $result = $dt->save();
-    if ($result) {
-        return response([
-            'status' => '200',
-            'message' => 'Data has been saved',
-            'data' => $dt
-        ], 200);
-    } else {
-        return response([
-            'status' => '500',
-            'message' => 'Data could not be saved'
-        ], 500);
-    }
-}
+// 	public function insert(Request $request)
+// {
+//     $dt = new IuranPenggunaApiModel;
+//     $dt->user_id = $request->user_id;
+//     $dt->keterangan = $request->keterangan;
+
+//     if ($request->hasFile('bukti_pembayaran')) {
+//         $file = $request->file('bukti_pembayaran');
+//         $fileName = time().'_'.$file->getClientOriginalName();
+//         $dt->bukti_pembayaran = $file->storeAs('bukti_pembayaran', $fileName, 'public');
+//     }
+
+//     $result = $dt->save();
+//     if ($result) {
+//         return response([
+//             'status' => '200',
+//             'message' => 'Data has been saved',
+//             'data' => $dt
+//         ], 200);
+//     } else {
+//         return response([
+//             'status' => '500',
+//             'message' => 'Data could not be saved'
+//         ], 500);
+//     }
+// }
 
 }
