@@ -14,7 +14,7 @@ class IuranApiController extends Controller
 	public function get_all(){
 		$length = DB::table('iuran_penggunas')->count();
         $data = DB::table('iuran_penggunas')
-        ->select('iuran_penggunas.id','user_id','iuran_id','keterangan','bukti_pembayaran','users.name','users.foto','iurans.metode_pembayaran','iurans.no_rekening','iurans.pemilik_rekening','iuran_penggunas.created_at')
+        ->select('iuran_penggunas.id','user_id','users.iuran_jumlah','iuran_id','keterangan','bukti_pembayaran','users.name','users.foto','iurans.metode_pembayaran','iurans.no_rekening','iurans.pemilik_rekening','iuran_penggunas.created_at')
         ->join('users', 'users.id','=','iuran_penggunas.user_id')
         ->join('iurans', 'iurans.id','=','iuran_penggunas.iuran_id')
         ->get();
@@ -81,7 +81,7 @@ class IuranApiController extends Controller
 				], 404);
 		}
 	}
-    
+
     public function insert(Request $request)
     {
       // Validate incoming request
