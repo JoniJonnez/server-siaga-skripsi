@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\api\IuranPenggunaApiModel;
+use App\Models\api\IuranTipeApiModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -13,13 +14,22 @@ class IuranApiController extends Controller
 	public function get_all(){
 		$length = DB::table('iuran_penggunas')->count();
         $data = DB::table('iuran_penggunas')
-        ->select('iuran_penggunas.id','user_id','iuran_id','keterangan','bukti_pembayaran','users.name','users.foto','iurans.metode_pembayaran','iurans.no_rekening','iurans.pemilik_rekening','iurans.metode_pembayaran','iuran_penggunas.created_at')
+        ->select('iuran_penggunas.id','user_id','iuran_id','keterangan','bukti_pembayaran','users.name','users.foto','iurans.metode_pembayaran','iurans.no_rekening','iurans.pemilik_rekening','iuran_penggunas.created_at')
         ->join('users', 'users.id','=','iuran_penggunas.user_id')
         ->join('iurans', 'iurans.id','=','iuran_penggunas.iuran_id')
         ->get();
 		return response([
 			 	'status' 		=> '200',
 				'data'			=> $data,
+				'totalRecord'	=> $length
+			], 200);
+	}
+
+    public function get_tipe(){
+		$length = DB::table('iurans')->count();
+		return response([
+			 	'status' 		=> '200',
+				'data'			=> IuranTipeApiModel::all(),
 				'totalRecord'	=> $length
 			], 200);
 	}
