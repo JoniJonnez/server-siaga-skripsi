@@ -37,6 +37,7 @@ Route::post('/informasi/insert', 'App\Http\Controllers\Api\InformasiApiControlle
 Route::delete('/informasi/delete/{id}', 'App\Http\Controllers\Api\InformasiApiController@delete');
 
 Route::get('/iuran/list', 'App\Http\Controllers\Api\IuranApiController@get_all');
+Route::get('/iuran/type', 'App\Http\Controllers\Api\IuranApiController@get_iuran');
 Route::get('/iuran/by-id/{id}', 'App\Http\Controllers\Api\IuranApiController@by_id');
 Route::delete('/iuran/delete/{id}', 'App\Http\Controllers\Api\IuranApiController@delete');
 Route::post('/iuran/insert', 'App\Http\Controllers\Api\IuranApiController@insert');
