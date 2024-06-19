@@ -66,7 +66,7 @@ class UserApiController extends Controller
 
 	public function register(Request $request){
 		$dt = new UserApiModel;
-		$dt->mu 				= $request->role;
+		// $dt->mu 				= $request->role;
 		$dt->name 				= $request->fullname;
 		$dt->email 				= $request->email;
 		$dt->phone 				= $request->phone;
